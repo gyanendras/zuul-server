@@ -1,0 +1,22 @@
+server:
+ port: 9090
+  
+spring:
+ application:
+  name: zuul-server 
+zuul:
+# Service will be mapped under the /api URI
+ prefix: /api
+# Uncomment to disable auto-registering all services read from Eureka
+ ignoredServices: '*'
+ routes:
+  test:
+   path: /redirect/**
+   url: http://google.com
+  localcountry:
+   path: /local/**
+   serviceId: LOCALCOUNTRY
+  country:
+   path: /formal/**
+   serviceId: COUNTRY
+  

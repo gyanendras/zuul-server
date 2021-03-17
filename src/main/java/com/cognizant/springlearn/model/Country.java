@@ -3,11 +3,11 @@ package com.cognizant.springlearn.model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cognizant.springlearn.SpringLearnApplication;
+import com.cognizant.springlearn.SpringLearnApplicationZuul;
 
 public class Country {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplication.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplicationZuul.class);
 	
 	
 	private String name;
@@ -18,12 +18,12 @@ public class Country {
 	}
 	
 	
-	
+	/*
 	public Country(String name, String code) {
 		super();
 		this.name = name;
 		this.code = code;
-	}
+	}*/
 
 
 

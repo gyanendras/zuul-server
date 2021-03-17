@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cognizant.springlearn.SpringLearnApplication;
+import com.cognizant.springlearn.SpringLearnApplicationZuul;
 import com.cognizant.springlearn.exceptions.CountryNotFoundException;
 import com.cognizant.springlearn.model.Country;
 import com.cognizant.springlearn.model.Greeting;
@@ -26,7 +26,7 @@ import com.cognizant.springlearn.model.Greeting;
 @RestController
 public class GreetingController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplication.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplicationZuul.class);
 	
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
@@ -44,14 +44,14 @@ public class GreetingController {
 		return list;
 	}
 	
-	@PostMapping(value="/countries")
+	@PostMapping(value="/countries",consumes = "application/json")
 	public Country addCountry(@RequestBody Country country) {
 		LOGGER.info("Start");
 		return country;
 	}
 	
 	
-	@GetMapping("/countries/{code}")
+	@PostMapping("/countries/{code}")
 	public Country getCountriesByCode(@PathVariable String code) throws CountryNotFoundException {
 		ApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
 		List<Country> list = new ArrayList<>();
